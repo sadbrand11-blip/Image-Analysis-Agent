@@ -2,3 +2,7 @@
 *.gif binary
 *.jpg binary
 *.png binary
+# Keep audited artifacts byte-identical to the frozen originals.
+docs/GENERAL_RAG_RESULTS.json -text !eol whitespace=cr-at-eol
+docs/GENERAL_RAG_FAILURES.csv -text !eol whitespace=cr-at-eol
+eval/general_rag_label_review.json -text !eol whitespace=cr-at-eol
