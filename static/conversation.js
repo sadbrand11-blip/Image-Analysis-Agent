@@ -5,6 +5,7 @@ byId('vision-mode').addEventListener('change',syncVisionScheduler);
 byId('runtime-engine').addEventListener('change',syncVisionScheduler);
 syncVisionScheduler();
 function element(tag,text,className){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(className)el.className=className;return el;}
+function ragSummary(meta){const labels={complete:'已完成',not_run:'未运行',not_formally_evaluated:'尚未独立验收',passed_small_scale_project_eval:'通过小规模项目评测',not_promoted_current_default_retained:'未达发布门槛，保留原配置',experimental_explicit_mode:'手动方法对照',degraded_not_equivalent_to_release:'降级运行'};return `${meta.mode} · ${meta.corpus||'旧库'} · 评测 ${labels[meta.evaluation_status]||meta.evaluation_status||'未记录'} · ${labels[meta.acceptance_status]||meta.acceptance_status||'未记录'}${meta.fallback_reason?' · 降级原因：'+meta.fallback_reason:''}`;}
 function expanded(data){return !!(data.memory_context?.enabled&&data.memory_context?.available&&data.memory_context.preferences?.display_detail==='expanded');}
 function detailPanel(title,data,className){const panel=element('details',undefined,className);panel.open=expanded(data);panel.append(element('summary',title));return panel;}
 function appendTaskDetails(turn,data){
@@ -87,7 +88,7 @@ byId('chat-form').onsubmit=async event=>{
  appendTaskDetails(turn,data);
  appendAdaptiveDetails(turn,data);
  appendGraphDetails(turn,data);
-  if(data.rag_metadata)turn.append(element('p',`知识检索：${data.rag_metadata.mode} · ${data.rag_metadata.corpus||'旧库'}${data.rag_metadata.fallback_reason?' · 降级原因：'+data.rag_metadata.fallback_reason:''}`,'small'));
+  if(data.rag_metadata)turn.append(element('p','知识检索：'+ragSummary(data.rag_metadata),'small'));
   const memory=data.memory_context;
   if(memory){const section=element('details');section.open=!memory.available;section.append(element('summary',`长期记忆：${!memory.available?'不可用':memory.enabled?'已启用':'已关闭'} · ${({saved:'已保存摘要',reused:'复用已保存摘要',not_completed:'未完成，不保存',disabled:'不保存',unavailable:'存储不可用'})[memory.save_status]||memory.save_status}`));
    section.append(element('p','历史只能辅助规划，不能代替当前图片证据。','small'));

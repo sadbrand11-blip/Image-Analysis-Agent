@@ -12,6 +12,7 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -r requirements-demo.txt pytest==7.4.4
       - run: python -m pytest tests/test_public_demo.py -q
+      - run: python -m optical_agent.experiments evaluate_general_rag validate
       - run: python tools/audit_public.py
   regression:
     runs-on: ubuntu-latest
@@ -30,3 +31,4 @@ jobs:
       - run: node tests/check_memory_ui.cjs
       - run: node tests/check_langgraph_ui.cjs
       - run: node tests/check_simplification_ui.cjs
+      - run: node tests/check_general_rag_ui.cjs

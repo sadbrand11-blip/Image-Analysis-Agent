@@ -30,7 +30,7 @@ from importlib.util import find_spec
 from optical_agent.general_vision import GeneralDetector, DEFAULT_CHECKPOINT
 from optical_agent.general_catalog import COCO_CLASSES, CLASS_NAMES, PROFILE_ID, ONTOLOGY_VERSION
 from optical_agent.image_input import read_image_bytes
-from optical_agent.general_knowledge import create_general_retriever, general_release_config
+from optical_agent.general_knowledge import create_general_retriever, general_release_config, CORPUS_MANIFESTS
 from optical_agent.general_demo import demo_image
 from optical_agent.public_config import PUBLIC_ROOT
 
@@ -137,7 +137,7 @@ def health():
                     "detector_available": MODEL.exists() and MODEL.stat().st_size > 1_000_000 and find_spec('torch') is not None and find_spec('torchvision') is not None,
                     "model_path": str(MODEL), "app_version": __version__,
                     "runtime_revision": DELIVERY_REVISION,
-                    "rag_revision": "v050_rag_delivery_r3",
+                    "rag_revision": "v061_general_rag_evaluation",
                     "memory_revision": "v051_memory_r1",
                     "graph_revision": "v052_langgraph_r1",
                     "langgraph_available": find_spec('langgraph') is not None,
@@ -185,7 +185,7 @@ def _get_archived_retriever(mode=None, vision_mode='legacy'):
         return _rag_retrievers[key]
 
 
-def get_retriever(mode=None, vision_mode='general_rgb_v1'):
+def get_retriever(mode=None, vision_mode='general_rgb_v1', corpus_version=None):
     if _retriever is not None and mode is None:
         return _retriever  # explicit test/application injection remains supported.
     if vision_mode == 'legacy':
@@ -197,17 +197,29 @@ def get_retriever(mode=None, vision_mode='general_rgb_v1'):
     config = general_release_config(root)
     model_root = DATA_ROOT / 'models/bge-small-zh-v1.5'
     signature = tuple((p.name, p.stat().st_size, p.stat().st_mtime_ns) for p in sorted(model_root.iterdir()) if p.is_file()) if model_root.exists() else ()
-    key = ('general', mode, config['release_config_hash'], signature)
+    if corpus_version is not None and corpus_version not in CORPUS_MANIFESTS:
+        raise ValueError('未知通用知识版本')
+    requested_hash = fingerprint(build_chunks(root, CORPUS_MANIFESTS[corpus_version])) if corpus_version else config['corpus_hash']
+    key = ('general', mode, corpus_version, requested_hash, config['release_config_hash'], signature)
     with _rag_lock:
         if key not in _rag_retrievers:
             encoder = None
             if mode in {'embedding', 'hybrid'}:
                 if _rag_encoder is None or _rag_encoder_signature != signature:
-                    _rag_encoder = LocalEncoder(device='cpu')
+                    try:
+                        _rag_encoder = LocalEncoder(device='cpu')
+                    except ImportError as exc:
+                        raise RagUnavailable('本地Embedding依赖不可用：' + type(exc).__name__) from exc
                     _rag_encoder_signature = signature
                 encoder = _rag_encoder
-            _rag_retrievers[key] = create_general_retriever(root, mode, vision_mode=PROFILE_ID,
-                                                          encoder=encoder, allow_fallback=mode is None)
+            created = create_general_retriever(root, mode, vision_mode=PROFILE_ID,
+                encoder=encoder, allow_fallback=mode is None, corpus_version=corpus_version)
+            final_config = general_release_config(root)
+            final_hash = fingerprint(build_chunks(root, CORPUS_MANIFESTS[corpus_version])) if corpus_version else final_config['corpus_hash']
+            if (final_config['release_config_hash'] != config['release_config_hash'] or
+                    final_hash != requested_hash):
+                raise RagUnavailable('创建期间发布配置或知识语料发生变化，请重新创建会话')
+            _rag_retrievers[key] = created
             while len(_rag_retrievers) > 12:
                 del _rag_retrievers[next(iter(_rag_retrievers))]
         return _rag_retrievers[key]
@@ -224,7 +236,7 @@ def capabilities():
 
 @app.get('/knowledge')
 def knowledge_page():
-    return render_template('knowledge.html')
+    return render_template('knowledge.html', rag_release=general_release_config(Path(__file__).parent))
 
 
 @app.post('/api/knowledge/search')
@@ -243,10 +255,16 @@ def knowledge_search():
         if not isinstance(modes,list) or not modes or len(modes)>4 or any(m not in {'legacy','tfidf','embedding','hybrid'} for m in modes):
             raise ValueError('检索模式无效')
         outputs={}
+        corpus_version = payload.get('corpus_version') or None
+        if corpus_version not in {None, 'general-natural-v1', 'general-natural-v2'}:
+            raise ValueError('未知通用知识版本')
+        if corpus_version is not None and vision != PROFILE_ID:
+            raise ValueError('通用语料不能用于历史水下知识检索')
         for mode in modes:
             started=perf_counter()
             try:
-                retriever=get_retriever(mode,vision)
+                retriever=(get_retriever(mode,vision,corpus_version) if corpus_version is not None
+                           else get_retriever(mode,vision))
                 load_ms=(perf_counter()-started)*1000
                 started=perf_counter(); results=retriever.search(query,top_k)
                 query_ms=(perf_counter()-started)*1000

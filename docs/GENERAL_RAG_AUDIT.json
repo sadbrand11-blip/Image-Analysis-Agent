@@ -1,0 +1,669 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "PASS",
+  "reason_code": "frozen_retrieval_evidence_consistent_with_qualified_claims",
+  "summary": "A-F pass for the frozen retrieval experiment and final publication overlay. No open integrity blockers. This audit does not promote the failed candidate.",
+  "agent_id": "/root/general_rag_final_audit",
+  "verdict_id": "general-rag-v061-final-20261023",
+  "executor_model": "inherited Codex model; exact identifier not exposed",
+  "executor_family": "openai",
+  "reviewer_model": "inherited Codex model; exact identifier not exposed",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "external_human_review": false,
+  "date": "2026-10-23",
+  "auditor": "fresh same-family Codex experiment-integrity reviewer",
+  "overall_verdict": "pass",
+  "integrity_status": "pass",
+  "checks": {
+    "A": {
+      "name": "Ground truth provenance",
+      "status": "PASS",
+      "details": [
+        "The labels are source-grounded programmatic evidence spans with model-authored Chinese questions. All 80 question texts, 40 paired targets and eleven cards were read. All 100 per-question quote occurrences (38 evidence groups, 50 unique alternative definitions) match exact source offsets and complete chunks. Fact groups and evidence groups do not cross development/test.",
+        "G0 has 14 chunks. G1 has 65 and retains the original 14 unchanged. Every existing target is covered in G0; every new target requires added knowledge. Missing-information negatives are distinct from supported negative capability answers.",
+        "The initial rejection and four findings are preserved. Final questions remove redundant requirements, add complete equivalent alternatives, combine arithmetic consequences with their source facts, and correctly identify MPD as a database. Final review binds the current dataset SHA. Saved chronology: final camera revision 15:32:22 UTC, accepted review 15:37:10, freeze 15:38:23, then development selection before heldout output. No evidence of retrieval-rank-derived ground truth was found. Records and filesystem timestamps are not externally notarized proof of execution history.",
+        "Official algorithm documentation, project rules, research conclusions and prior measured visual results remain distinguished. Saved sources support Gamma, SSIM, CLAHE, model-weight and MPD statements. Frozen visual summaries support AP, working-point, calibration, diagnostic and SICE statements. Those source facts do not make this a new visual evaluation."
+      ],
+      "evidence": [
+        {
+          "file": "private-repository/eval/general_rag_questions.json",
+          "line": 4,
+          "note": "Source-grounded authoring"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 75,
+          "note": "Exact offsets and split checks"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 123,
+          "note": "Preserved original corpus"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/label_review_initial.md",
+          "line": 9,
+          "note": "Preserved initial blockers"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/authoring_manifest.json",
+          "line": 704,
+          "note": "Final revision timestamp"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/label_review.json",
+          "line": 4,
+          "note": "Accepted dataset binding"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/label_review.json",
+          "line": 10,
+          "note": "Review timestamp"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/freeze.json",
+          "line": 4,
+          "note": "Freeze timestamp"
+        },
+        {
+          "file": "private-repository/knowledge/GENERAL_V2_ENHANCEMENT.md",
+          "line": 7,
+          "note": "MPD database"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/sources/cvpr2025_machine_iqa.txt",
+          "line": 18,
+          "note": "Saved official abstract"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/sources/skimage_exposure_020.txt",
+          "line": 63,
+          "note": "Gamma formula"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/sources/skimage_metrics_020.txt",
+          "line": 778,
+          "note": "SSIM parameters"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/sources/opencv_histogram_3414_official_source.md",
+          "line": 43,
+          "note": "CLAHE official fallback source"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/sources/project_v060/docs/GENERAL_EVALUATION.md",
+          "line": 23,
+          "note": "Frozen visual measurements"
+        }
+      ]
+    },
+    "B": {
+      "name": "Scores and denominators",
+      "status": "PASS",
+      "details": [
+        "Independently recomputed 1,920 raw/delivered question scores from 960 records across 2 splits, 2 corpora, 3 methods and 2 threshold stages. Recall@1/3/5/10, first-relevant MRR@10, full evidence hits, missing evidence and negative-return flags all match. Aggregate, old/new and multi-evidence summaries match. All 17,035 returned chunk occurrences match their frozen corpus contents.",
+        "Recall divides unique retrieved required evidence groups by source-defined required groups. MRR is reciprocal rank of the first relevant chunk. Overlapping chunks never create additional evidence credit. All primary profiles use 30 answerable questions and 10 negatives; G0 new-only questions stay in its denominator. Negatives are excluded from Recall/MRR.",
+        "All 24 paired confidence intervals reproduce with fact-group resampling, seed 20261023 and 2,000 repetitions. Old-target comparisons use 10 answerable groups; all-answerable comparisons use 15. Hybrid minus TF-IDF tuned G1 R@3 is -0.20, CI [-0.35, -0.05].",
+        "No performance denominator comes from the predictions' maximum, minimum or mean. Embedding unit normalization and cosine/RRF scores are retrieval components. Raw retrieval and threshold-filtered delivery are reported separately."
+      ],
+      "evidence": [
+        {
+          "file": "private-repository/optical_agent/rag_eval.py",
+          "line": 49,
+          "note": "Evidence matching"
+        },
+        {
+          "file": "private-repository/optical_agent/rag_eval.py",
+          "line": 56,
+          "note": "Recall and MRR"
+        },
+        {
+          "file": "private-repository/optical_agent/rag_eval.py",
+          "line": 75,
+          "note": "Denominators"
+        },
+        {
+          "file": "private-repository/optical_agent/rag_eval.py",
+          "line": 87,
+          "note": "Fact-group bootstrap"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 252,
+          "note": "G0 primary denominator"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/test.json",
+          "line": 126038,
+          "note": "G1 TF-IDF tuned"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/test.json",
+          "line": 171573,
+          "note": "G1 embedding tuned"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/test.json",
+          "line": 217764,
+          "note": "G1 hybrid tuned"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/summary.json",
+          "line": 176,
+          "note": "Algorithm intervals"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 116,
+          "note": "Published interval"
+        }
+      ]
+    },
+    "C": {
+      "name": "Files, claims and selection",
+      "status": "PASS",
+      "details": [
+        "All 35 freeze input hashes, 8 frozen artifact hashes, 18 archived repository source copies, 43 source snapshots and 12 project-provenance entries match. Both indexes have correct hashes, finite 512-dimensional vectors and unit norms within floating-point error. Corpus fingerprints and the G0 original baseline match.",
+        "Published RESULTS.json and FAILURES.csv are byte-identical to frozen summary.json and failures.csv. The CSV contains 389 expected failure rows: 198 development and 191 test. Six publication/config artifacts match the public repository copies. Both README result statements match the frozen values.",
+        "All six threshold choices satisfy the recorded development-grid objective. Hybrid is correctly preselected: development G1 R@3 73.33%, versus TF-IDF 65% and embedding 56.67%. The selection lock binds freeze and selection; heldout uses selected profiles and does not tune them.",
+        "Heldout G1 tuned R@3 is 80% / 25% / 60%, MRR 0.850 / 0.300 / 0.616667, negative false returns 1/10 / 0/10 / 0/10 for TF-IDF / embedding / hybrid. Hybrid fails method, old-knowledge and actual-release guards. Actual release remains G0 TF-IDF at 0.10/0.75; no heldout runner-up was promoted.",
+        "The publication's stale pending-review sentence was corrected before final hash binding. Historical authoring records retain pre-review states, superseded by the exact hash-bound accepted review. Frozen evaluator inputs and results were preserved."
+      ],
+      "evidence": [
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/freeze.json",
+          "line": 30,
+          "note": "Input identities"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/freeze.json",
+          "line": 67,
+          "note": "Artifact identities"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/selection.lock.json",
+          "line": 2,
+          "note": "Selection lock"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/selection.json",
+          "line": 6002,
+          "note": "Candidate"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/dev.json",
+          "line": 215865,
+          "note": "Dev hybrid result"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 355,
+          "note": "Locked execution"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 434,
+          "note": "Preselected candidate gate"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/decision.json",
+          "line": 8,
+          "note": "Failed promotion"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/decision.json",
+          "line": 27,
+          "note": "Retained baseline"
+        },
+        {
+          "file": "private-repository/knowledge/general_rag_release.json",
+          "line": 4,
+          "note": "Actual release"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 29,
+          "note": "Published values"
+        },
+        {
+          "file": "private-repository/README.md",
+          "line": 13,
+          "note": "Private README"
+        },
+        {
+          "file": "public-repository/README.md",
+          "line": 50,
+          "note": "Public README"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_SOURCES.json",
+          "line": 34,
+          "note": "Completed review wording"
+        },
+        {
+          "file": "workspace-artifacts/publish_general_rag_v061.py",
+          "line": 107,
+          "note": "Publication-only wording correction"
+        }
+      ]
+    },
+    "D": {
+      "name": "Called metrics, outputs and timing",
+      "status": "PASS",
+      "details": [
+        "The CLI calls the general evaluator. Its active pipeline calls scoring, aggregate summaries, latency, release decision, confidence intervals and failure-table export. Saved results contain these outputs. Historical C0/C1 routines in rag_eval.py are separate; this experiment uses only its shared scoring/statistics helpers.",
+        "Timing occurs after tuned thresholds are installed, on CPU. Query caches are cleared for each warm timing and an immediate cached timing is recorded separately. Each split has 40 distinct texts repeated five times (200 timings), not 200 independent samples. Model load is excluded and separately reported.",
+        "The archived run REPORT.md places the same latency in both threshold tables under a generic heading. The final published report explicitly calls it tuned-configuration timing and says fixed thresholds were not separately timed. No fixed-versus-tuned speed comparison is supported. The legacy independent_questions field denotes distinct texts, not independent facts; final documentation explains that distinction and confidence intervals use fact groups.",
+        "The auditor did not rerun retrieval, model inference or heldout evaluation. Statistics were independently recomputed from saved outputs; code paths and frozen identities were inspected."
+      ],
+      "evidence": [
+        {
+          "file": "private-repository/optical_agent/experiments/evaluate_general_rag.py",
+          "line": 16,
+          "note": "CLI calls evaluator"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 284,
+          "note": "Scoring calls"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 390,
+          "note": "Fixed/tuned calls and timing"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 327,
+          "note": "Latency procedure"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 485,
+          "note": "Statistics/report calls"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/test.json",
+          "line": 240934,
+          "note": "Hybrid timing"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/REPORT.md",
+          "line": 11,
+          "note": "Archived generic timing heading"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 9,
+          "note": "Correct timing qualification"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 125,
+          "note": "Distinct texts versus facts"
+        }
+      ]
+    },
+    "E": {
+      "name": "Scope and claim strength",
+      "status": "PASS",
+      "details": [
+        "Actual scope: one local model revision, two corpora, three retrieval algorithms, fixed and development-selected rejection profiles, 80 authored questions and 40 fact groups. Each split has 40 texts from 20 groups: 30 answerable texts from 15 groups and 10 negative texts from five groups. Paraphrases and timing repetitions are not additional independent facts.",
+        "Final documentation calls this a small project retrieval experiment and explicitly excludes real LLM answer quality, generated citation correctness, visual improvement and multi-agent gains. Off-target retrieval IDs are not reported as erroneous generated citations. No unsupported comprehensive or externally validated benchmark claim was found.",
+        "Same-family review remains provisional; external human review is false. Results support this frozen authored benchmark, not broad deployment rejection guarantees or general retriever superiority."
+      ],
+      "evidence": [
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/authoring_manifest.json",
+          "line": 25,
+          "note": "Questions/fact groups"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/run_20261023/freeze.json",
+          "line": 131,
+          "note": "No external human review"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG.md",
+          "line": 48,
+          "note": "Question scope"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG.md",
+          "line": 54,
+          "note": "Provisional small evaluation"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 86,
+          "note": "No generated citation metric"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 88,
+          "note": "Retrieval-only limits"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 124,
+          "note": "Fact group units"
+        },
+        {
+          "file": "private-repository/knowledge/general_rag_release.json",
+          "line": 38,
+          "note": "Correct scope fields"
+        }
+      ]
+    },
+    "F": {
+      "name": "Evaluation type",
+      "status": "PASS",
+      "classification": "source_grounded_model_authored_retrieval_benchmark",
+      "coarse_skill_taxonomy": "synthetic_proxy",
+      "details": [
+        "Precise classification: source-grounded, model-authored retrieval benchmark with exact source-span relevance labels and same-family provisional semantic review. In the skill's coarse taxonomy, synthetic_proxy is the closest category because queries and relevance annotations are project-authored, not an official independent human benchmark.",
+        "This is not real_gt detector evaluation, human_eval, an official external retrieval benchmark or real LLM answer-quality evaluation. Prior COCO measurements in cards are source content for retrieval questions and were not produced by this retrieval experiment.",
+        "No fake-ground-truth pattern was found: source labels precede retrieval and do not treat the evaluated retriever's output as the reference."
+      ],
+      "evidence": [
+        {
+          "file": "private-repository/eval/general_rag_questions.json",
+          "line": 4,
+          "note": "Authored queries"
+        },
+        {
+          "file": "D:/CodexData/optical_agent/rag/general_v061/label_review.json",
+          "line": 5,
+          "note": "Same-family review"
+        },
+        {
+          "file": "private-repository/knowledge/GENERAL_V2_RESULTS.md",
+          "line": 3,
+          "note": "Prior measurements as content"
+        },
+        {
+          "file": "private-repository/optical_agent/general_rag_eval.py",
+          "line": 296,
+          "note": "No generated answers"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_SOURCES.json",
+          "line": 34,
+          "note": "Authored/review limits"
+        },
+        {
+          "file": "private-repository/docs/GENERAL_RAG_RESULTS.md",
+          "line": 88,
+          "note": "Retrieval-only scope"
+        }
+      ]
+    }
+  },
+  "evaluation_type": "source_grounded_model_authored_retrieval_benchmark",
+  "coarse_skill_taxonomy": "synthetic_proxy",
+  "open_integrity_blockers": [],
+  "candidate_promotion_blockers": [
+    "G1 tuned Hybrid R@3 0.60 versus G1 tuned TF-IDF 0.80 fails the +0.05 gain requirement; MRR 0.616667 versus 0.85 also decreases.",
+    "Same-fixed-threshold Hybrid old-target R@3 decreases 0.90 to 0.80 and MRR 0.85 to 0.75.",
+    "Actual tuned Hybrid old-target R@3/MRR are 0.55/0.55 versus current G0 TF-IDF 0.90/0.90. New-target R@3 0.70 is below 0.80."
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "G1 tuned heldout Recall@3 80% / 25% / 60%",
+      "impact": "supported",
+      "scope": "TF-IDF / embedding / hybrid; 30 answerable texts from 15 fact groups"
+    },
+    {
+      "id": "C2",
+      "claim": "Knowledge expansion improves overall fixed-TF-IDF coverage",
+      "impact": "supported_with_qualifier",
+      "scope": "Overall 60% to 80%, but old-target R@3 falls 90% to 80%; new-target R@3 80%"
+    },
+    {
+      "id": "C3",
+      "claim": "G1 Hybrid should replace the default",
+      "impact": "unsupported_and_correctly_rejected",
+      "scope": "Failed preset gates; G0 TF-IDF retained"
+    },
+    {
+      "id": "C4",
+      "claim": "Published CPU P95 timings",
+      "impact": "supported_with_qualifier",
+      "scope": "Tuned CPU warm queries; fixed thresholds not separately timed"
+    },
+    {
+      "id": "C5",
+      "claim": "80 independent facts or 200 independent performance samples per split",
+      "impact": "unsupported_not_claimed",
+      "scope": "80 texts / 40 groups total; 200 repeated timings per split"
+    },
+    {
+      "id": "C6",
+      "claim": "LLM answer, vision or multi-agent gains; external human acceptance",
+      "impact": "unsupported_not_claimed",
+      "scope": "Outside experiment"
+    }
+  ],
+  "limitations": [
+    "Exact reviewer model identifier is not exposed; no particular model or cross-family review is claimed.",
+    "Source checks used saved official content and frozen project artifacts; no new external-network verification.",
+    "Hashes and chronological records are consistent but not externally notarized execution evidence.",
+    "Metrics were recalculated from saved rankings; retrieval/inference/heldout were not rerun.",
+    "One model revision and small authored Chinese benchmark cannot establish broad generalization.",
+    "Archived REPORT.md has generic CPU headings; final publication supplies the correct tuned-timing interpretation."
+  ],
+  "resolved_observations": [
+    {
+      "id": "P1",
+      "issue": "Published provenance retained pending-review wording",
+      "status": "resolved_before_final_hash_binding",
+      "evidence": {
+        "file": "private-repository/docs/GENERAL_RAG_SOURCES.json",
+        "line": 34,
+        "note": "Completed provisional review"
+      }
+    }
+  ],
+  "deterministic_verification": {
+    "assertions_in_primary_independent_recalculation": 22561,
+    "primary_recalculation_errors": 0,
+    "frozen_inputs": 35,
+    "frozen_artifacts": 8,
+    "archived_repository_source_copies": 18,
+    "source_snapshots": 43,
+    "project_provenance_entries": 12,
+    "source_chunk_objects": 79,
+    "quote_occurrences": 100,
+    "unique_evidence_groups": 38,
+    "unique_evidence_alternatives": 50,
+    "question_records": 960,
+    "raw_and_delivered_question_scores": 1920,
+    "ranked_chunk_occurrences": 17035,
+    "paired_intervals_recomputed": 24,
+    "paired_interval_mismatches": 0,
+    "selected_threshold_profiles_checked": 6,
+    "failure_csv_rows": 389,
+    "failure_rows_by_split": {
+      "dev": 198,
+      "test": 191
+    },
+    "paid_api_requests_by_audit": 0,
+    "retrieval_reruns_by_audit": 0
+  },
+  "chronology_utc": {
+    "final_camera_revision": "2026-10-23T15:32:22.343022+00:00",
+    "label_review": "2026-10-23T15:37:10.103044+00:00",
+    "freeze": "2026-10-23T15:38:23.963685+00:00",
+    "dev_file_mtime": "2026-10-23T15:39:41.186460+00:00",
+    "selection_file_mtime": "2026-10-23T15:39:41.200612+00:00",
+    "selection_lock_file_mtime": "2026-10-23T15:39:41.203761+00:00",
+    "test_file_mtime": "2026-10-23T15:40:41.694014+00:00"
+  },
+  "collaborator_crosscheck": {
+    "task": "/root/general_rag_final_audit/claims_crosscheck",
+    "role": "Read-only claims and selection crosscheck",
+    "independence": "same-family",
+    "result": "No blocking publication mismatch; selected thresholds, scores, CSV and claims match."
+  },
+  "action_items": [
+    "Retain G0 TF-IDF; integrity PASS is not candidate promotion.",
+    "Preserve frozen inputs, results and both review stages. Future tuning needs a new evaluation version.",
+    "Keep authored-benchmark, fact-group, timing and provisional-review qualifiers in shortened summaries."
+  ],
+  "trace_path": null,
+  "trace_note": "Only these two report writes were authorized. Evidence, verification counts, chronology and all input hashes are embedded in the reports.",
+  "audited_input_hashes": {
+    "private-repository\\docs\\GENERAL_RAG.md": "sha256:b84f4396f81dce3ae552b4721bc9ecef4717ff03f42bdf9d333c7523d1d79bde",
+    "private-repository\\docs\\GENERAL_RAG_FAILURES.csv": "sha256:69ddf795d94c1012b58c44090821253c5cce1ab9aa37bde59218eb9ef6796c68",
+    "private-repository\\docs\\GENERAL_RAG_RESULTS.json": "sha256:5a0fb0d580835650034d599defba8804425983f31472fbd0cac8491be72e3226",
+    "private-repository\\docs\\GENERAL_RAG_RESULTS.md": "sha256:6bda8fbe31f03748e885b815acc8bb9c65cb4e503a288d6a8f5178e98d76b7c5",
+    "private-repository\\docs\\GENERAL_RAG_SOURCES.json": "sha256:a2009d58b2aa35f1f7d44eeb7846f552de308c983df59043049ddd17b493c6b4",
+    "private-repository\\eval\\general_rag_questions.json": "sha256:e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+    "private-repository\\knowledge\\GENERAL_CAPABILITIES.md": "sha256:db0258cdca76668c334760266f5ca9c4cef1b6de608d196c798c4908d5be611e",
+    "private-repository\\knowledge\\GENERAL_COCO_MODEL.md": "sha256:fe0f72cf0ffacef7bc65a3d103034ddfcf7d7942a25fe3debd254ed0806ebbac",
+    "private-repository\\knowledge\\GENERAL_EXPOSURE.md": "sha256:9d16e4801328d06b879cd396bb19da3b416ea537fd7bcd2e6115b7108766c7d0",
+    "private-repository\\knowledge\\general_rag_release.json": "sha256:32b909c14905f5c9a046959210eedef934802f0c906674ce6f3f8f56c9a72868",
+    "private-repository\\knowledge\\GENERAL_SOURCES.json": "sha256:67b3bd48d7a1362107f77b8174c25d30a374ea26ac2c3faef7ea9d97a26b52c2",
+    "private-repository\\knowledge\\GENERAL_V2_BRIGHTNESS.md": "sha256:0d4b6b207ce0de6811d6201c4e7ee643fa3aa9f1a3299b45e56b029abd10c7f4",
+    "private-repository\\knowledge\\GENERAL_V2_CALIBRATION.md": "sha256:6fafff9f6b1d6e1fe8a78e251dc8a129ffbb20a4f569a9cad8652b48f20e7be9",
+    "private-repository\\knowledge\\GENERAL_V2_CORRECTION.md": "sha256:1ee0a0994f91878df3aebb1d16a3aa7e58c85d833f6a94d229685c6b4d01dd49",
+    "private-repository\\knowledge\\GENERAL_V2_DEV_FAILURES.md": "sha256:21b7dbe3c46b46d87aa1319e3d7ceb665e58cec3a713130d86f5a1998993ec05",
+    "private-repository\\knowledge\\GENERAL_V2_ENHANCEMENT.md": "sha256:813f5750e2d32405e877189dd150709bdde2164511853c35662a599d8601ca19",
+    "private-repository\\knowledge\\GENERAL_V2_METRICS.md": "sha256:3ad92e6e517bb1b8c23384cc29083c034daced35fa55c25640fc322d93896d44",
+    "private-repository\\knowledge\\GENERAL_V2_RESULTS.md": "sha256:5240a60a750c5ac9f549faafdb9a5a0ad090a3f60d725ab56a5623089614d1a8",
+    "private-repository\\knowledge\\GENERAL_V2_SCOPE.md": "sha256:b0240aebc239df57a3481a984a39972537aa2df45d6728244ee7cf9c342fca7b",
+    "private-repository\\knowledge\\GENERAL_V2_SOURCES.json": "sha256:7e8928a4627962aff97c05de6e84df386c0a841d0e5086e08654f0ab8f3d68e1",
+    "private-repository\\optical_agent\\experiments\\evaluate_general_rag.py": "sha256:e7a5f161a49abb01b66d586fecaad85b8abd632a7e65cecd8d05de5d03848edf",
+    "private-repository\\optical_agent\\general_knowledge.py": "sha256:1e68c516794b938db262173f164b70a022ddf4b98e317a764d50f10a3956995a",
+    "private-repository\\optical_agent\\general_rag_eval.py": "sha256:df429b87d97abf861f7fb10cf1f6a2c615da556e2121c0d4d0b958f074ad80b7",
+    "private-repository\\optical_agent\\rag_engine.py": "sha256:ea0d779c4eb9de8cfeed06c2de33325dc236eeff9c9d78c26cc6ba1b47577dd5",
+    "private-repository\\optical_agent\\rag_eval.py": "sha256:87338cc4f8dd96a808dd7b540ff68e93ef8f4c105d3fd6b5f5ecfe46782b1a41",
+    "private-repository\\README.md": "sha256:324ec8881d926c3f9ed594bd200d4c5969474e1b843a083a82a2edf7194e6bf4",
+    "private-repository\\tests\\test_general_rag_eval.py": "sha256:f82534c22ca63c42efe3069bf22eb4d6a16648f1ebac4f7170c131581ad5ddbb",
+    "private-repository\\tests\\test_general_rag_release.py": "sha256:a2506c3bf975db16dc2dbdd21a8b830efe0fb9f1f94a7fb860e3521968901012",
+    "workspace-artifacts\\publish_general_rag_v061.py": "sha256:88c5e53f74ea7bf9a9be6fcd2e587fe0315a3c245187ed4051089b90a4b3ae1c",
+    "public-repository\\docs\\GENERAL_RAG.md": "sha256:b84f4396f81dce3ae552b4721bc9ecef4717ff03f42bdf9d333c7523d1d79bde",
+    "public-repository\\docs\\GENERAL_RAG_FAILURES.csv": "sha256:69ddf795d94c1012b58c44090821253c5cce1ab9aa37bde59218eb9ef6796c68",
+    "public-repository\\docs\\GENERAL_RAG_RESULTS.json": "sha256:5a0fb0d580835650034d599defba8804425983f31472fbd0cac8491be72e3226",
+    "public-repository\\docs\\GENERAL_RAG_RESULTS.md": "sha256:6bda8fbe31f03748e885b815acc8bb9c65cb4e503a288d6a8f5178e98d76b7c5",
+    "public-repository\\docs\\GENERAL_RAG_SOURCES.json": "sha256:a2009d58b2aa35f1f7d44eeb7846f552de308c983df59043049ddd17b493c6b4",
+    "public-repository\\knowledge\\general_rag_release.json": "sha256:32b909c14905f5c9a046959210eedef934802f0c906674ce6f3f8f56c9a72868",
+    "public-repository\\README.md": "sha256:c02761245f670b81857f4ffbd1e388c62c63ead0aaa8fa53fb72199dca42a393",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\authoring_manifest.json": "sha256:7752b2eebd155d9561938d6d787aa50d94309de673783b19b82aabac5c17e05b",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\baseline_G0.json": "sha256:67f3b68a3afdce6e980d42c84d77d45c6b83940cbb32aa93a1e195c519860a69",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\implementation_ledger.json": "sha256:833baf010350545706349762eb2aa68ad6ad313038cda4ccdf1a414881f7b671",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\label_review.json": "sha256:5f5353f17addffdf4ec4f6d54ad54a44d943662420f9f001a12ab25921860ec1",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\label_review.md": "sha256:1b943a5de191b0833ac3d88434e9c998da9a8ce5c00d050fa77aa66c45a64e23",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\label_review_initial.json": "sha256:6b96ffcedee7c8aa065d5ac1f85651b40a3bf6fa07fe5d2aca973e34a76fac8a",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\label_review_initial.md": "sha256:0d778a1f214a0fa912569894f968eeaf21d3007db54ae0704e0c24b47ccb7057",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\decision.json": "sha256:60f3d19ca4598efeb70d0de7ebf60ba21bf26bfb74398afb9e4d9825590ffe08",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\dev.json": "sha256:cc3f2c28c761a9e2d8d544e5e5ea36e63b99f6bf3adb6620aa018111545162bd",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\failures.csv": "sha256:69ddf795d94c1012b58c44090821253c5cce1ab9aa37bde59218eb9ef6796c68",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\freeze.json": "sha256:ccd92cbb0873616778ffa3ae268fa59d917d595aa4e4c55116df9adf6bc2dfc7",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\eval\\general_rag_questions.json": "sha256:e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_CAPABILITIES.md": "sha256:db0258cdca76668c334760266f5ca9c4cef1b6de608d196c798c4908d5be611e",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_COCO_MODEL.md": "sha256:fe0f72cf0ffacef7bc65a3d103034ddfcf7d7942a25fe3debd254ed0806ebbac",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_EXPOSURE.md": "sha256:9d16e4801328d06b879cd396bb19da3b416ea537fd7bcd2e6115b7108766c7d0",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_SOURCES.json": "sha256:67b3bd48d7a1362107f77b8174c25d30a374ea26ac2c3faef7ea9d97a26b52c2",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_BRIGHTNESS.md": "sha256:0d4b6b207ce0de6811d6201c4e7ee643fa3aa9f1a3299b45e56b029abd10c7f4",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_CALIBRATION.md": "sha256:6fafff9f6b1d6e1fe8a78e251dc8a129ffbb20a4f569a9cad8652b48f20e7be9",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_CORRECTION.md": "sha256:1ee0a0994f91878df3aebb1d16a3aa7e58c85d833f6a94d229685c6b4d01dd49",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_DEV_FAILURES.md": "sha256:21b7dbe3c46b46d87aa1319e3d7ceb665e58cec3a713130d86f5a1998993ec05",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_ENHANCEMENT.md": "sha256:813f5750e2d32405e877189dd150709bdde2164511853c35662a599d8601ca19",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_METRICS.md": "sha256:3ad92e6e517bb1b8c23384cc29083c034daced35fa55c25640fc322d93896d44",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_RESULTS.md": "sha256:5240a60a750c5ac9f549faafdb9a5a0ad090a3f60d725ab56a5623089614d1a8",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_SCOPE.md": "sha256:b0240aebc239df57a3481a984a39972537aa2df45d6728244ee7cf9c342fca7b",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\knowledge\\GENERAL_V2_SOURCES.json": "sha256:7e8928a4627962aff97c05de6e84df386c0a841d0e5086e08654f0ab8f3d68e1",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\optical_agent\\experiments\\evaluate_general_rag.py": "sha256:e7a5f161a49abb01b66d586fecaad85b8abd632a7e65cecd8d05de5d03848edf",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\optical_agent\\general_rag_eval.py": "sha256:df429b87d97abf861f7fb10cf1f6a2c615da556e2121c0d4d0b958f074ad80b7",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\optical_agent\\rag_engine.py": "sha256:ea0d779c4eb9de8cfeed06c2de33325dc236eeff9c9d78c26cc6ba1b47577dd5",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\frozen_source\\optical_agent\\rag_eval.py": "sha256:87338cc4f8dd96a808dd7b540ff68e93ef8f4c105d3fd6b5f5ecfe46782b1a41",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\G0_chunks.json": "sha256:66af7645d31ea575fc43ba9ed6979a22cbde59f79a93db23d502ab0cbe98a4c4",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\G1_chunks.json": "sha256:9fca75cf562a44662ea805723b38a4c74060151333e54d3836424518c1aaa49e",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\indexes\\04ee8c45620bcd94770644ceccb95503ca1407135b742b0852a42db4eaf06bfa\\425c0877d6ee0311af942c5f533a0f7853a8535b1670bf63234ac2ed06b9b2f9\\index.json": "sha256:b9f31dea3edba3c63f67e2ab7f5025b076fa91a2fd91a83ea17457034245fe00",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\indexes\\04ee8c45620bcd94770644ceccb95503ca1407135b742b0852a42db4eaf06bfa\\425c0877d6ee0311af942c5f533a0f7853a8535b1670bf63234ac2ed06b9b2f9\\vectors.npy": "sha256:85b16713d32111ee152ed3ef64c82675c9f29a00967e75a3e36d1d31adf498b9",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\indexes\\3a259c2b328dc8d2ecef0a5cfa738a6f08f92471e022ee3859ea09a97ba63edb\\425c0877d6ee0311af942c5f533a0f7853a8535b1670bf63234ac2ed06b9b2f9\\index.json": "sha256:805f7fecf2a9b7a9bb872714fbf16afbee2c48921281283a3abb26a7259df524",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\indexes\\3a259c2b328dc8d2ecef0a5cfa738a6f08f92471e022ee3859ea09a97ba63edb\\425c0877d6ee0311af942c5f533a0f7853a8535b1670bf63234ac2ed06b9b2f9\\vectors.npy": "sha256:9761fcb660da01d9a18d73196230a8fbcd8136b1facad829887f7ade7fa67e20",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\questions.json": "sha256:03acf2dcdedf84ec9d069fc4f8b1c42ff4ebd9b6b29f6c5a301b41547dbb21d2",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\REPORT.md": "sha256:2247f1fa00db2fa7848f5f269868282f9c5907799c7d19588b2f1506b9e00562",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\review.json": "sha256:5f5353f17addffdf4ec4f6d54ad54a44d943662420f9f001a12ab25921860ec1",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\selection.json": "sha256:fd5513299a8e9840fe2a89f78d09c47acba0d2df0109defa687f882a879e46ec",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\selection.lock.json": "sha256:a7df32949547a785fa9f601786e9ccbdcf31be87bc491e6087a0ecfee6166c01",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\summary.json": "sha256:5a0fb0d580835650034d599defba8804425983f31472fbd0cac8491be72e3226",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\run_20261023\\test.json": "sha256:22350f311f83046c67fbbf962532ae0eb9234c8222d6f132194042420fab6cfa",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_BRIGHTNESS.md": "sha256:0d4b6b207ce0de6811d6201c4e7ee643fa3aa9f1a3299b45e56b029abd10c7f4",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_CALIBRATION.md": "sha256:6fafff9f6b1d6e1fe8a78e251dc8a129ffbb20a4f569a9cad8652b48f20e7be9",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_CORRECTION.md": "sha256:1ee0a0994f91878df3aebb1d16a3aa7e58c85d833f6a94d229685c6b4d01dd49",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_DEV_FAILURES.md": "sha256:21b7dbe3c46b46d87aa1319e3d7ceb665e58cec3a713130d86f5a1998993ec05",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_ENHANCEMENT.md": "sha256:8293346fd1757e90e1ab907d8ef4d96728dddf72e27680af19c8723c1fd220dd",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_METRICS.md": "sha256:3ad92e6e517bb1b8c23384cc29083c034daced35fa55c25640fc322d93896d44",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_RESULTS.md": "sha256:5240a60a750c5ac9f549faafdb9a5a0ad090a3f60d725ab56a5623089614d1a8",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\authoring_initial_cards\\GENERAL_V2_SCOPE.md": "sha256:b0240aebc239df57a3481a984a39972537aa2df45d6728244ee7cf9c342fca7b",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\coco_official.html": "sha256:cbcafe3697d0952c7fa936958e88699f2c000190fbbfb4cdd8376ca4461d4182",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\coco_official.txt": "sha256:4120cc671ca28ff5ae4ae26bdcd1e97c26058ebbf76f66a8e0791f22d5e87126",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\coco_official_cocoscripts.js": "sha256:2e5fab192568c4b200598a7bec926a4255e05d7027d8c2c9923f28f09e6aff43",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\coco_official_termsofuse.htm": "sha256:bd019f88ee44c29b2f19c5b99888cf5bc2e7c16f57b6e52af8ed3a60462e8bdd",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\coco_official_termsofuse.txt": "sha256:f012a415a6d0ccaa8dd184417fd34ce69a52f4ca936c5efd037a261b395c831d",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\coco_terms_provenance.json": "sha256:d71fde3dd87e01a97918c73b1553c91649ff737df04d71e2d02f1615a3c2e4a3",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\cvpr2025_machine_iqa.html": "sha256:fa6138e6da538d9ef51d10e873e796ee04b51a99993a3db57e7d4ff01cb39268",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\cvpr2025_machine_iqa.pdf": "sha256:aa47cc6cc6010d2e4348319cea3f9b4c13877f3836c81461571cb5dc18f55448",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\cvpr2025_machine_iqa.txt": "sha256:a946292aba4e19b727444fab2387c1aa405ee07d9412882c5bd28b7fa7c9245a",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\cvpr2025_machine_iqa_original_download.json": "sha256:549a11fb4d698551c93a6425dd04c8a5c3819b500cdfd753a9ed1b7191fd79f7",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\cvpr2025_machine_iqa_pdf.txt": "sha256:94307c22b2ec7ddfef62f6992b8114ef648c191f9b7177b651f5e52248fbc9d4",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\opencv_alternative.json": "sha256:9fb9db44caac76ca3e7bbbac0ee8dbc8fe11b0bac7bbc8f0fe8c9774b9aeb4ec",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\opencv_histogram_3414.html": "sha256:ea01ee24865398dc7a33e0934e37739754b4a1ea8b59d97efd1c2e9ffff9c605",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\opencv_histogram_3414.txt": "sha256:783d620ab066d325cb5cb59ed25dbd42983146b81f78a12905b43c6b3a4fd647",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\opencv_histogram_3414_official_source.md": "sha256:b2f2baa3d15f10499f4b1635395a7ac2cd7f41935e52e3cf1f5d2184af825a7c",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\calibration_summary.json": "sha256:e497e3358435cbf4a6c09da736983c92978b9258abe8b0aa92d877ab218aa9b9",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\development_summary.json": "sha256:c96cfa9c0d2f4cc4db3731540da7dda7905fc68dbb9552de5a32ea8ab1726926",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\docs\\GENERAL_DATA.md": "sha256:24233d3c6b5fa4a0fde3cb0d3e02f6d2ba1984c25f9ecb668739714e1ab8f2d6",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\docs\\GENERAL_EVALUATION.md": "sha256:74459d517a8ec4b2ffb06af43f39ea9b94e812f052e743fc56665fb0e2ef77c3",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\docs\\results\\general_v060_summary.json": "sha256:6bfce7ab1a680297bf85b70c22878ef2b38f5584f54e79265f65f152e273f272",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\exposure_policy.json": "sha256:eef8abee9583abcfcc1839e1fffc134042af007a2945d782c28eadfdaa66313e",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\freeze.json": "sha256:32d37066aa9df6d6463bb8fe478c0688f7a36daccbb9bd36e305e7e9510fe63d",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\optical_agent\\general_catalog.py": "sha256:4ea012ca8f26e27580790885bea90c87a4ff8abfa324d0fc7c75c409898f3134",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\optical_agent\\general_eval.py": "sha256:b5af2fa6a2cffe1d76a07cba03507d7565adf404488457932bea35343a3a4db2",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\optical_agent\\general_vision.py": "sha256:1caeaaa160e8011d976e7c1e705060a3bd9a56fa5a555a6de09f237190f1a503",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\public_summary.json": "sha256:6bfce7ab1a680297bf85b70c22878ef2b38f5584f54e79265f65f152e273f272",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\quality.py": "sha256:fe10ba0a31ae7edea47f15f0c8475ffa378d8e1e4244119f8b4dc779fe1f8d65",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\project_v060\\sice_acquisition.json": "sha256:70ab2ec906617164b1bf504a7f3a8fcc2d606cf7cdc6dabf3505004f480b5333",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\retrieval_manifest.json": "sha256:d69857a62f85294d337566d0bda7f105d50c6e45b993077b8cfdd1a591f95a05",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\skimage_exposure_020.html": "sha256:32f04eaf91a49f7583af6cf42d84ef4a333ea55cb825e8442ac8a94bda40b67c",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\skimage_exposure_020.txt": "sha256:bd0d741f54be7f514a62b29568e6175e5a83783f8e59ad9e07e0e448d4037962",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\skimage_metrics_020.html": "sha256:94bf65710a2a7153cd83922088b54538b56837e8e1fba20955afd745efb56e5a",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\skimage_metrics_020.txt": "sha256:6572b047222a388f25f3d7f026826aae4a02b6a440183e794e3ed804008dcb9a",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\torchvision_model_017.html": "sha256:d78d30fdca8479e54974a77505567cc3a348511ded8e220c981eaed664d0c55e",
+    "D:\\CodexData\\optical_agent\\rag\\general_v061\\sources\\torchvision_model_017.txt": "sha256:5321b0d18c5d71b980acad1c4f4f810ffee0584ea26be29dce81f70ae8603a7f",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\config.json": "sha256:3853a7979202c348751b753e36f579c41d8da7d36af617d3d907e1fc9b441f2a",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\config.json.download.json": "sha256:6f7a5362ead31a17f0a4df13aa6a1e775beecc68c554c90b412d3adfb63a4e66",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\model.safetensors": "sha256:354763b9b1357bc9c44f62c6be2276321081ed2567773608c0d0785b61d5a026",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\model.safetensors.download.json": "sha256:11512b9dc11f4e8ba84d6de86ac3d72f22d2d3e7b310ac7c5ee9c71d2acf31fb",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\modules.json": "sha256:84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\modules.json.download.json": "sha256:c1195912a1ececd9d2f654e91fcd59ed181c5189c720951ba48a23f9bfd4d889",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\README.md.download.json": "sha256:5d6e88ee3061999d0d9285f8f66eecf62c6997355cdc30b46125508d21026031",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\sentence_bert_config.json": "sha256:84e39fda68ccbff05bfa723ae9c0e70e23e2ec373b76e0f8c6e71af72a693cbf",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\sentence_bert_config.json.download.json": "sha256:45ab29d6b2c82743c81af6ce7efd7780343889d9d1cd2755e97bab12929af018",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\special_tokens_map.json": "sha256:b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\special_tokens_map.json.download.json": "sha256:ace5be334aa112dd89f26b0b115b95c95d0e6d663fa29e426bc3d67f181106c0",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\tokenizer.json": "sha256:48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\tokenizer.json.download.json": "sha256:038c7e05e2b0561782321f65a341481d6b16bd8f8c03eda95abe1344da0aa779",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\tokenizer_config.json": "sha256:e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\tokenizer_config.json.download.json": "sha256:330cb15dcbf2200540a22af7114646c8a0d831796dcdcd1e2301486600934497",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\vocab.txt": "sha256:45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c",
+    "D:\\CodexData\\optical_agent\\rag\\models\\bge-small-zh-v1.5\\vocab.txt.download.json": "sha256:faeab1bf8b32ef9e8f45d8b5c9f9a11e1804a3b6e118822831ec5aaf5aff268c"
+  },
+  "audited_input_count": 138,
+  "generated_at": "2026-10-23T15:58:00.012246+00:00",
+  "test_fixture_note": "Final tests/test_general_rag_release.py fixture uses a case-sensitive GENERAL_ filename prefix to exclude the live lowercase release JSON on Windows. This fixture-only correction was read and its final hash is bound; it does not change frozen evaluator inputs or results.",
+  "publication_copy": {
+    "path_sanitized": true,
+    "original_audit_sha256": "cb5f8ac54ccb2d2b5fbcfbe8aa8d466bff849b35fce124b9136049bc38d1df73",
+    "reviewer_requested_model": "gpt-6-astra",
+    "reviewer_requested_reasoning": "ultra",
+    "exact_model_identity_reported_by_reviewer": "unavailable",
+    "note": "Requested routing is recorded by the executor; the reviewer independently reports its identity limitation."
+  }
+}

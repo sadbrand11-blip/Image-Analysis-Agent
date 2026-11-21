@@ -42,11 +42,12 @@ Native remains the default; optional LangGraph executes the same stages. Version
 
 ## Versioned evaluation
 
-| 0.6.0 measurement | Result and scope |
+| Versioned measurement | Result and scope |
 |---|---|
-| COCO detection | AP 24.12%, AP50 39.46%; 1,000 held-out project-split images |
-| Runtime equivalence | Native/LangGraph 3/3 deterministic real-vision cases |
-| MCP transport | 3 tools; 9/9 direct/protocol checks |
+| COCO detection (0.6.0) | AP 24.12%, AP50 39.46%; 1,000 held-out project-split images |
+| Runtime equivalence (0.6.0) | Native/LangGraph 3/3 deterministic real-vision cases |
+| MCP transport (0.6.0) | 3 tools; 9/9 direct/protocol checks |
+| RAG (0.6.1) | G1 delivered Recall@3: TF-IDF 80%, BGE 25%, Hybrid 60%; 30 answerable held-out questions plus 10 negatives. G0/TF-IDF retained; [report](docs/GENERAL_RAG_RESULTS.md). |
 
 0.6.0 uses a new general-photo profile, corpus and memory namespace. Its [evaluation report](docs/GENERAL_EVALUATION.md) separates COCO ground-truth results, simulated exposure diagnostics, offline runtime tests and unavailable SICE experiments. A development gate determines whether correction can become the default selected image. Explicit candidate comparison remains available.
 

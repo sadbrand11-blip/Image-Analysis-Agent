@@ -1,0 +1,174 @@
+[
+  {
+    "id": "general-capabilities-v1",
+    "title": "普通自然图像 Agent 0.6.0 当前能力",
+    "path": "knowledge/GENERAL_CAPABILITIES.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_CAPABILITIES.md",
+    "verified_at": "2026-10-23",
+    "source_type": "project_capabilities",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "project_files"
+  },
+  {
+    "id": "general-exposure-v1",
+    "title": "普通照片曝光、校正与可靠性工程规则",
+    "path": "knowledge/GENERAL_EXPOSURE.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_EXPOSURE.md",
+    "verified_at": "2026-10-23",
+    "source_type": "project_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "project_files"
+  },
+  {
+    "id": "general-coco-model-v1",
+    "title": "COCO 官方通用检测器、类别与校准边界",
+    "path": "knowledge/GENERAL_COCO_MODEL.md",
+    "url": "https://docs.pytorch.org/vision/0.17/models/generated/torchvision.models.detection.fasterrcnn_mobilenet_v3_large_320_fpn.html",
+    "verified_at": "2026-10-23",
+    "source_type": "official_model_documentation",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "official_documentation"
+  },
+  {
+    "id": "general-results-v2",
+    "title": "0.6.0冻结视觉实测与分母",
+    "path": "knowledge/GENERAL_V2_RESULTS.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_RESULTS.md",
+    "verified_at": "2026-10-23",
+    "source_type": "project_measured",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "frozen_project_artifacts",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-calibration-v2",
+    "title": "校准适用条件与可靠性限制",
+    "path": "knowledge/GENERAL_V2_CALIBRATION.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_CALIBRATION.md",
+    "verified_at": "2026-10-23",
+    "source_type": "project_measured_and_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "frozen_project_artifacts_and_code",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-brightness-v2",
+    "title": "普通照片明暗与局部风险规则",
+    "path": "knowledge/GENERAL_V2_BRIGHTNESS.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_BRIGHTNESS.md",
+    "verified_at": "2026-10-23",
+    "source_type": "project_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "project_files",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-correction-v2",
+    "title": "Gamma与CLAHE公式和有界实现",
+    "path": "knowledge/GENERAL_V2_CORRECTION.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_CORRECTION.md",
+    "verified_at": "2026-10-23",
+    "source_type": "official_algorithm_and_project_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "official_documentation_and_code",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-metrics-v2",
+    "title": "图像质量和检测指标适用条件",
+    "path": "knowledge/GENERAL_V2_METRICS.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_METRICS.md",
+    "verified_at": "2026-10-23",
+    "source_type": "official_metrics_and_project_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "official_documentation_and_code",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-enhancement-v2",
+    "title": "观感与机器任务偏好的区别",
+    "path": "knowledge/GENERAL_V2_ENHANCEMENT.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_ENHANCEMENT.md",
+    "verified_at": "2026-10-23",
+    "source_type": "research_and_project_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "official_abstract_and_pdf",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-dev-failures-v2",
+    "title": "开发集校正失败与取舍案例",
+    "path": "knowledge/GENERAL_V2_DEV_FAILURES.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_DEV_FAILURES.md",
+    "verified_at": "2026-10-23",
+    "source_type": "project_development_measured",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "frozen_development_artifacts",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  },
+  {
+    "id": "general-scope-v2",
+    "title": "通用版本类别输入和许可范围",
+    "path": "knowledge/GENERAL_V2_SCOPE.md",
+    "url": "https://github.com/sadbrand11-blip/underwater-vision-agent/blob/main/knowledge/GENERAL_V2_SCOPE.md",
+    "verified_at": "2026-10-23",
+    "source_type": "official_model_and_project_policy",
+    "vision_modes": [
+      "general_rgb_v1"
+    ],
+    "verification_level": "official_documentation_and_code",
+    "applicable_versions": [
+      "0.6.0",
+      "general_rgb_v1"
+    ],
+    "knowledge_version": "general-natural-v2"
+  }
+]

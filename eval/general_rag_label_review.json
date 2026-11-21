@@ -1,0 +1,1273 @@
+{
+  "accepted": true,
+  "provisional": true,
+  "dataset_sha256": "e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+  "review_independence": "same-family",
+  "external_human_review": false,
+  "reviewer_model": "gpt-6-astra",
+  "acceptance_status": "provisional",
+  "audit_stage": "pre_retrieval_label_and_source_re_review",
+  "reviewed_at_utc": "2026-10-23T15:37:10.103044+00:00",
+  "retrieval_run": false,
+  "retrieval_results_consulted": false,
+  "paid_api_calls": 0,
+  "external_network_verification": false,
+  "findings": [],
+  "findings_resolved": [
+    {
+      "id": "L1",
+      "status": "resolved",
+      "resolution": "Queries now ask the same intended necessary facts within each pair; unnecessary RAG/history, memory/database, project-MPD, and candidate duplicate requirements removed. SSIM, Gamma, brightness and local-correction phrasings explicitly request their retained facts.",
+      "evidence": [
+        "eval/general_rag_questions.json:8",
+        "eval/general_rag_questions.json:229",
+        "eval/general_rag_questions.json:403",
+        "eval/general_rag_questions.json:1835",
+        "eval/general_rag_questions.json:647",
+        "eval/general_rag_questions.json:2042",
+        "eval/general_rag_questions.json:1809",
+        "eval/general_rag_questions.json:1669"
+      ]
+    },
+    {
+      "id": "L2",
+      "status": "resolved",
+      "resolution": "Complete equivalent source alternatives added for revised targets. Generic failure-example query narrowed to the specified dark_06/local_bounded case. Re-review additionally identified the general camera question alternative; final camera pair now explicitly requests both ISO and shutter, requiring the more complete original boundary. No material omitted complete alternative found for the final targets.",
+      "evidence": [
+        "eval/general_rag_questions.json:68",
+        "eval/general_rag_questions.json:505",
+        "eval/general_rag_questions.json:1610",
+        "eval/general_rag_questions.json:712",
+        "eval/general_rag_questions.json:1874",
+        "eval/general_rag_questions.json:1167",
+        "eval/general_rag_questions.json:2068",
+        "eval/general_rag_questions.json:1283",
+        "eval/general_rag_questions.json:366"
+      ]
+    },
+    {
+      "id": "L3",
+      "status": "resolved",
+      "resolution": "The development comparison is now a single evidence group; differences in FN/FP are derived from its quoted values rather than counted as independent evidence.",
+      "evidence": [
+        "eval/general_rag_questions.json:203",
+        "eval/general_rag_questions.json:453",
+        "knowledge/GENERAL_V2_DEV_FAILURES.md:7"
+      ]
+    },
+    {
+      "id": "L4",
+      "status": "resolved",
+      "resolution": "ENHANCEMENT identifies MPD as a database/benchmark and distinguishes the project COCO baseline from MPD replication. Questions ask the paper and database/scale, with no unidentified quality-model premise.",
+      "evidence": [
+        "knowledge/GENERAL_V2_ENHANCEMENT.md:7",
+        "eval/general_rag_questions.json:403",
+        "eval/general_rag_questions.json:1835",
+        "sources/cvpr2025_machine_iqa.txt:18",
+        "sources/cvpr2025_machine_iqa_pdf.txt:51"
+      ]
+    }
+  ],
+  "prepare_permitted": true,
+  "permission_scope": "Label/source audit permits prepare of these exact frozen inputs; this is not acceptance of retrieval results, algorithm promotion, or a deployment.",
+  "initial_review": {
+    "path": "D:\\CodexData\\optical_agent\\rag\\general_v061\\label_review_initial.json",
+    "sha256": "6b96ffcedee7c8aa065d5ac1f85651b40a3bf6fa07fe5d2aca973e34a76fac8a",
+    "accepted": false,
+    "dataset_sha256": "ac82375390bf66f0ef025294f40c55acf072c972018e948c61b76f47b3f80729",
+    "findings": [
+      "L1",
+      "L2",
+      "L3",
+      "L4"
+    ],
+    "preserved_questions_path": "D:\\CodexData\\optical_agent\\rag\\general_v061\\questions_initial.json",
+    "preserved_questions_sha256": "ac82375390bf66f0ef025294f40c55acf072c972018e948c61b76f47b3f80729"
+  },
+  "intermediate_review": {
+    "dataset_sha256": "c5043bead18f13ec168b48091aee9c97412c7f24b6a2bc52b63b7cbe9f990d32",
+    "remaining_issue": "General camera-boundary question omitted the BRIGHTNESS answer alternative.",
+    "final_resolution": "Both camera queries now explicitly ask ISO AND shutter, retaining the precise complete EXPOSURE evidence. LF normalization occurred before the first retrieval run."
+  },
+  "authoring_manifest_sha256": "7752b2eebd155d9561938d6d787aa50d94309de673783b19b82aabac5c17e05b",
+  "sources_manifest_sha256": "7e8928a4627962aff97c05de6e84df386c0a841d0e5086e08654f0ab8f3d68e1",
+  "reviewed_input_hashes": {
+    "eval\\general_rag_questions.json": "e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+    "knowledge\\GENERAL_SOURCES.json": "67b3bd48d7a1362107f77b8174c25d30a374ea26ac2c3faef7ea9d97a26b52c2",
+    "knowledge\\GENERAL_V2_SOURCES.json": "7e8928a4627962aff97c05de6e84df386c0a841d0e5086e08654f0ab8f3d68e1",
+    "knowledge\\GENERAL_CAPABILITIES.md": "db0258cdca76668c334760266f5ca9c4cef1b6de608d196c798c4908d5be611e",
+    "knowledge\\GENERAL_EXPOSURE.md": "9d16e4801328d06b879cd396bb19da3b416ea537fd7bcd2e6115b7108766c7d0",
+    "knowledge\\GENERAL_COCO_MODEL.md": "fe0f72cf0ffacef7bc65a3d103034ddfcf7d7942a25fe3debd254ed0806ebbac",
+    "knowledge\\GENERAL_V2_RESULTS.md": "5240a60a750c5ac9f549faafdb9a5a0ad090a3f60d725ab56a5623089614d1a8",
+    "knowledge\\GENERAL_V2_CALIBRATION.md": "6fafff9f6b1d6e1fe8a78e251dc8a129ffbb20a4f569a9cad8652b48f20e7be9",
+    "knowledge\\GENERAL_V2_BRIGHTNESS.md": "0d4b6b207ce0de6811d6201c4e7ee643fa3aa9f1a3299b45e56b029abd10c7f4",
+    "knowledge\\GENERAL_V2_CORRECTION.md": "1ee0a0994f91878df3aebb1d16a3aa7e58c85d833f6a94d229685c6b4d01dd49",
+    "knowledge\\GENERAL_V2_METRICS.md": "3ad92e6e517bb1b8c23384cc29083c034daced35fa55c25640fc322d93896d44",
+    "knowledge\\GENERAL_V2_ENHANCEMENT.md": "813f5750e2d32405e877189dd150709bdde2164511853c35662a599d8601ca19",
+    "knowledge\\GENERAL_V2_DEV_FAILURES.md": "21b7dbe3c46b46d87aa1319e3d7ceb665e58cec3a713130d86f5a1998993ec05",
+    "knowledge\\GENERAL_V2_SCOPE.md": "b0240aebc239df57a3481a984a39972537aa2df45d6728244ee7cf9c342fca7b",
+    "optical_agent\\general_rag_eval.py": "df429b87d97abf861f7fb10cf1f6a2c615da556e2121c0d4d0b958f074ad80b7",
+    "optical_agent\\rag_eval.py": "87338cc4f8dd96a808dd7b540ff68e93ef8f4c105d3fd6b5f5ecfe46782b1a41",
+    "optical_agent\\rag_engine.py": "ea0d779c4eb9de8cfeed06c2de33325dc236eeff9c9d78c26cc6ba1b47577dd5"
+  },
+  "checks": {
+    "unique_questions": 80,
+    "fact_groups": 40,
+    "unique_evidence_groups": 38,
+    "unique_alternative_definitions": 50,
+    "dev": {
+      "existing": 20,
+      "new": 10,
+      "unanswerable": 10,
+      "multi_evidence_questions": 6
+    },
+    "test": {
+      "existing": 20,
+      "new": 10,
+      "unanswerable": 10,
+      "multi_evidence_questions": 10
+    },
+    "g0_chunks": 14,
+    "g1_chunks": 65,
+    "g0_prefix_unchanged": true,
+    "literal_offset_errors": 0,
+    "outside_chunk_quotes": 0,
+    "source_identity_path_errors": 0,
+    "manifest_or_snapshot_hash_errors": 0,
+    "exact_fact_group_or_evidence_id_split_collisions": 0,
+    "exact_quote_span_split_collisions": 0,
+    "confirmed_semantic_target_split_collisions": 0,
+    "all_new_groups_need_added_knowledge": true,
+    "all_negative_questions_request_missing_information": true,
+    "old_detection_boxes_used_as_current_evidence": false,
+    "dataset_and_v2_manifest_use_lf": true
+  },
+  "semantic_split_review": {
+    "status": "passed_provisionally",
+    "detail": "Checked all 40 semantic targets, not only IDs. Ontology test evidence is narrowed to its version clause and no longer includes dev model architecture. Memory migration and calibration transfer are distinct. Answerable capability boundaries are distinct from missing exact current physical values. No same target fact or paraphrase is assigned to both splits."
+  },
+  "source_review": {
+    "method": "Read saved official HTML/text/PDF-derived text and project code/frozen summaries; verified stored byte hashes. This is local provenance verification, not a fresh external or human verification. No retrieval rankings or scores were viewed.",
+    "verified_official_positions": [
+      "sources/skimage_exposure_020.txt:63 (gamma formula), :86 (direction)",
+      "sources/skimage_metrics_020.txt:778 (data_range), :785 (channel_axis), :839 (float-range caveat)",
+      "sources/opencv_histogram_3414_official_source.md:43 (CLAHE); official 3.4.14 source used after documented HTTP403",
+      "sources/cvpr2025_machine_iqa.txt:18 (official abstract), sources/cvpr2025_machine_iqa_pdf.txt:37 (Figure 1), :51 (MPD contribution)",
+      "sources/torchvision_model_017.txt:126 (architecture), :243 (DEFAULT equivalent COCO_V1)",
+      "sources/coco_official_termsofuse.txt:6 (image rights distinct from code)"
+    ],
+    "verified_project_positions": [
+      "sources/project_v060/quality.py:19 (Gamma bounds), :31 (grid/gray cutoffs), :157 (stop), :211 (CLAHE), :215 (denoise)",
+      "sources/project_v060/docs/GENERAL_EVALUATION.md:23 (working points), :28 (AP), :36 (coverage), :37 (precision limits), :81 (SICE)",
+      "sources/project_v060/docs/GENERAL_DATA.md:16 (licensing), :31 (calibration), :33 (development gate)",
+      "sources/project_v060/optical_agent/general_catalog.py:12 (ontology version)",
+      "sources/project_v060/development_summary.json: diagnostics entries original/dark_06/bright_14",
+      "sources/project_v060/public_summary.json: test/calibration/sice fields"
+    ]
+  },
+  "limitations": [
+    "Same-family independent agent review; no external human label verification.",
+    "Saved official source content and recorded hashes were verified locally; no fresh external verification in this review.",
+    "80 phrasings represent 40 fact groups, not 80 independent facts.",
+    "Acceptance covers only pre-retrieval labels/source grounding. It makes no claim about retrieval scores, real LLM answer quality, visual accuracy, or multi-agent benefit."
+  ],
+  "per_question_audit": [
+    {
+      "id": "old-real-synthetic-and-reference-1",
+      "line": 8,
+      "fact_group": "old-real-synthetic-and-reference",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-real-synthetic-and-reference-e1",
+        "old-real-synthetic-and-reference-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both queries now require real/synthetic separation plus reference-truth/alignment limits. These are distinct facts; old EXPOSURE and added ENHANCEMENT/RESULTS/METRICS alternatives are appropriately recorded."
+    },
+    {
+      "id": "old-input-1",
+      "line": 68,
+      "fact_group": "old-input",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-input-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask format and bit depth; CAPABILITIES and SCOPE alternatives fully support the same input restriction."
+    },
+    {
+      "id": "unknown-device-1",
+      "line": 101,
+      "fact_group": "unknown-device",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request absent current device serial/unique ID; no exact value in corpus."
+    },
+    {
+      "id": "old-unsupported-classes-1",
+      "line": 112,
+      "fact_group": "old-unsupported-classes",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-unsupported-classes-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the same four classes and no substitution rule; CAPABILITIES fully supports both. Broader domain/input statements are not equivalent."
+    },
+    {
+      "id": "new-gamma-formula-2",
+      "line": 138,
+      "fact_group": "new-gamma-formula",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-gamma-formula-e1",
+        "new-gamma-formula-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask formula/direction and target/bounds. The two necessary facts are distinct and verified in official exposure documentation and project code; G0 has neither full specification."
+    },
+    {
+      "id": "old-unsupported-classes-2",
+      "line": 177,
+      "fact_group": "old-unsupported-classes",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-unsupported-classes-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the same four classes and no substitution rule; CAPABILITIES fully supports both. Broader domain/input statements are not equivalent."
+    },
+    {
+      "id": "new-development-failure-1",
+      "line": 203,
+      "fact_group": "new-development-failure",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-development-failure-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask the specific dark_06/local_bounded numerical comparison. One evidence group contains all required values and the arithmetic consequence; bright_14 is not an alternative to this specified case."
+    },
+    {
+      "id": "old-real-synthetic-and-reference-2",
+      "line": 229,
+      "fact_group": "old-real-synthetic-and-reference",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-real-synthetic-and-reference-e1",
+        "old-real-synthetic-and-reference-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both queries now require real/synthetic separation plus reference-truth/alignment limits. These are distinct facts; old EXPOSURE and added ENHANCEMENT/RESULTS/METRICS alternatives are appropriately recorded."
+    },
+    {
+      "id": "old-underwater-isolation-2",
+      "line": 289,
+      "fact_group": "old-underwater-isolation",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-underwater-isolation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask calibration transfer from the different underwater model. CAPABILITIES and SCOPE model-identity restriction are valid equivalents. This target differs from memory migration."
+    },
+    {
+      "id": "old-natural-brightness-2",
+      "line": 322,
+      "fact_group": "old-natural-brightness",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-natural-brightness-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether large natural bright/dark regions alone imply failure. EXPOSURE and BRIGHTNESS alternatives supply the rule."
+    },
+    {
+      "id": "unknown-current-gt-2",
+      "line": 355,
+      "fact_group": "unknown-current-gt",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request missing current-image FN/GT counts; historical aggregates cannot supply them."
+    },
+    {
+      "id": "old-camera-boundary-2",
+      "line": 366,
+      "fact_group": "old-camera-boundary",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-camera-boundary-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Final revision aligns both queries to ISO AND shutter time. EXPOSURE explicitly covers both. BRIGHTNESS explains shutter/aperture/irradiance but does not fully supply the requested ISO boundary, so it is no longer a complete alternative."
+    },
+    {
+      "id": "unknown-current-distance-2",
+      "line": 392,
+      "fact_group": "unknown-current-distance",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now request the same current person-to-camera metric distance; measurement/calibration is absent."
+    },
+    {
+      "id": "new-machine-iqa-research-1",
+      "line": 403,
+      "fact_group": "new-machine-iqa-research",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-machine-iqa-research-e1",
+        "new-machine-iqa-research-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the paper/preference conclusion and MPD database type/scale. Two necessary facts remain; unrelated project-implementation evidence and the unidentified model premise are removed. Official abstract and Figure 1 support the card."
+    },
+    {
+      "id": "unknown-illuminance-2",
+      "line": 442,
+      "fact_group": "unknown-illuminance",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request a missing measured lux value; a documented physical-inference limitation does not provide the value."
+    },
+    {
+      "id": "new-development-failure-2",
+      "line": 453,
+      "fact_group": "new-development-failure",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-development-failure-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask the specific dark_06/local_bounded numerical comparison. One evidence group contains all required values and the arithmetic consequence; bright_14 is not an alternative to this specified case."
+    },
+    {
+      "id": "old-domain-2",
+      "line": 479,
+      "fact_group": "old-domain",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-domain-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the same medical, remote-sensing and tiny-industrial-defect scope boundary. SCOPE mentions only part of this requested set; CAPABILITIES supplies the complete answer."
+    },
+    {
+      "id": "old-input-preprocessing-1",
+      "line": 505,
+      "fact_group": "old-input-preprocessing",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-input-preprocessing-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask orientation and RGB/official preprocessing; COCO_MODEL and SCOPE give complete equivalent support."
+    },
+    {
+      "id": "unknown-general-field-success-2",
+      "line": 538,
+      "fact_group": "unknown-general-field-success",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request an unperformed field/unseen-scene success-rate result; generalization caveats do not supply such a number."
+    },
+    {
+      "id": "old-quality-without-detector-2",
+      "line": 549,
+      "fact_group": "old-quality-without-detector",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-quality-without-detector-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether exposure assessment AND correction depend on detection weights. CAPABILITIES states this directly; the missing-model/empty-detection question is a separate fact."
+    },
+    {
+      "id": "old-current-evidence-2",
+      "line": 575,
+      "fact_group": "old-current-evidence",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-current-evidence-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both are narrowed to historical analysis replacing current measurements; CAPABILITIES and CALIBRATION give complete supporting alternatives. No historical boxes are presented as current evidence."
+    },
+    {
+      "id": "new-ap-and-operating-point-2",
+      "line": 608,
+      "fact_group": "new-ap-and-operating-point",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-ap-and-operating-point-e1",
+        "new-ap-and-operating-point-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both require actual AP and working-point results; distinct evidence groups cover the two metric families. Frozen public summary agrees with all values; G0 contains no numbers."
+    },
+    {
+      "id": "new-ssim-data-range-2",
+      "line": 647,
+      "fact_group": "new-ssim-data-range",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-ssim-data-range-e1",
+        "new-ssim-data-range-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now explicitly ask float/8-bit data_range AND color channel_axis. Both groups are necessary; official metrics documentation supports these settings and limitations."
+    },
+    {
+      "id": "old-model-architecture-1",
+      "line": 686,
+      "fact_group": "old-model-architecture",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-model-architecture-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask architecture and official DEFAULT weights. COCO_MODEL states DEFAULT=COCO_V1; SCOPE identifies project weights but not the explicit official DEFAULT equivalence, so it is not a complete substitute. Ontology test gold no longer includes architecture."
+    },
+    {
+      "id": "old-noise-risk-1",
+      "line": 712,
+      "fact_group": "old-noise-risk",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-noise-risk-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask noise/artifact risk. EXPOSURE and CORRECTION equivalents are present; the unnecessary Gamma behavior has been trimmed from the original quote."
+    },
+    {
+      "id": "new-local-implementation-2",
+      "line": 745,
+      "fact_group": "new-local-implementation",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-local-implementation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask Lab channel, clip/grid/blend and denoising conditions. The bounded implementation quote supports all, verified against quality.py; the old cards lack these parameters."
+    },
+    {
+      "id": "new-calibration-coverage-1",
+      "line": 771,
+      "fact_group": "new-calibration-coverage",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "new-calibration-coverage-e1",
+        "new-calibration-coverage-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request sufficient/insufficient class counts and independent heldout precision limits. The coverage and test-limitation groups are necessary; all values match frozen summaries."
+    },
+    {
+      "id": "old-stability-not-calibration-1",
+      "line": 810,
+      "fact_group": "old-stability-not-calibration",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-stability-not-calibration-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether same-image consistency establishes calibrated accuracy. EXPOSURE states the exact negative boundary; CALIBRATION only lists separate checks and is less complete for this precise equivalence claim."
+    },
+    {
+      "id": "new-brightness-grid-and-stop-1",
+      "line": 836,
+      "fact_group": "new-brightness-grid-and-stop",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-brightness-grid-and-stop-e1",
+        "new-brightness-grid-and-stop-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now request grid/gray thresholds and the independent extreme-frame stopping condition. Code confirms all values; old general endpoint rules do not supply the new numeric settings."
+    },
+    {
+      "id": "new-ap-and-operating-point-1",
+      "line": 875,
+      "fact_group": "new-ap-and-operating-point",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-ap-and-operating-point-e1",
+        "new-ap-and-operating-point-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both require actual AP and working-point results; distinct evidence groups cover the two metric families. Frozen public summary agrees with all values; G0 contains no numbers."
+    },
+    {
+      "id": "old-missing-model-1",
+      "line": 914,
+      "fact_group": "old-missing-model",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-missing-model-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the distinction between unavailable detection and an actual empty result. CAPABILITIES supplies that model-specific state distinction; the generic no-detection-run rule is only partial support."
+    },
+    {
+      "id": "old-rag-baseline-2",
+      "line": 940,
+      "fact_group": "old-rag-baseline",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-rag-baseline-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask default algorithm, independent-index requirements and unavailable state; one group suffices. The unrelated historical C0/C1 score requirement has been removed."
+    },
+    {
+      "id": "old-status-separation-2",
+      "line": 966,
+      "fact_group": "old-status-separation",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-status-separation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the three-way distinction among completion, quality pass and reliable recognition; CAPABILITIES supplies it. General quality-failure examples are not a complete three-way alternative."
+    },
+    {
+      "id": "old-input-2",
+      "line": 992,
+      "fact_group": "old-input",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-input-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask format and bit depth; CAPABILITIES and SCOPE alternatives fully support the same input restriction."
+    },
+    {
+      "id": "old-underwater-isolation-1",
+      "line": 1025,
+      "fact_group": "old-underwater-isolation",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-underwater-isolation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask calibration transfer from the different underwater model. CAPABILITIES and SCOPE model-identity restriction are valid equivalents. This target differs from memory migration."
+    },
+    {
+      "id": "new-local-implementation-1",
+      "line": 1058,
+      "fact_group": "new-local-implementation",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-local-implementation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask Lab channel, clip/grid/blend and denoising conditions. The bounded implementation quote supports all, verified against quality.py; the old cards lack these parameters."
+    },
+    {
+      "id": "old-input-preprocessing-2",
+      "line": 1084,
+      "fact_group": "old-input-preprocessing",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-input-preprocessing-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask orientation and RGB/official preprocessing; COCO_MODEL and SCOPE give complete equivalent support."
+    },
+    {
+      "id": "unknown-illuminance-1",
+      "line": 1117,
+      "fact_group": "unknown-illuminance",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request a missing measured lux value; a documented physical-inference limitation does not provide the value."
+    },
+    {
+      "id": "new-ontology-license-1",
+      "line": 1128,
+      "fact_group": "new-ontology-license",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-ontology-license-e1",
+        "new-ontology-license-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request ontology version and code/data permission distinction. The ontology evidence is narrowed to the version clause, eliminating the dev architecture fact from its gold. Both facts require added knowledge."
+    },
+    {
+      "id": "old-lost-texture-1",
+      "line": 1167,
+      "fact_group": "old-lost-texture",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-lost-texture-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both are narrowed to confirming clipped true-texture recovery. EXPOSURE and CORRECTION are valid alternatives. The ENHANCEMENT invisible-object-existence rule is related but not a full answer to this narrower texture question."
+    },
+    {
+      "id": "unknown-shutter-2",
+      "line": 1200,
+      "fact_group": "unknown-shutter",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request missing exact current shutter/exposure time. This differs from the answerable dev capability question about whether ISO/shutter inference is supported."
+    },
+    {
+      "id": "new-gamma-formula-1",
+      "line": 1211,
+      "fact_group": "new-gamma-formula",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-gamma-formula-e1",
+        "new-gamma-formula-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask formula/direction and target/bounds. The two necessary facts are distinct and verified in official exposure documentation and project code; G0 has neither full specification."
+    },
+    {
+      "id": "old-candidate-source-2",
+      "line": 1250,
+      "fact_group": "old-candidate-source",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-candidate-source-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask original-image origin and no chaining. The direct-from-original-once fact answers both; it is counted once with CAPABILITIES and CORRECTION alternatives."
+    },
+    {
+      "id": "old-camera-boundary-1",
+      "line": 1283,
+      "fact_group": "old-camera-boundary",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-camera-boundary-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Final revision aligns both queries to ISO AND shutter time. EXPOSURE explicitly covers both. BRIGHTNESS explains shutter/aperture/irradiance but does not fully supply the requested ISO boundary, so it is no longer a complete alternative."
+    },
+    {
+      "id": "old-noise-risk-2",
+      "line": 1309,
+      "fact_group": "old-noise-risk",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-noise-risk-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask noise/artifact risk. EXPOSURE and CORRECTION equivalents are present; the unnecessary Gamma behavior has been trimmed from the original quote."
+    },
+    {
+      "id": "unknown-shutter-1",
+      "line": 1342,
+      "fact_group": "unknown-shutter",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request missing exact current shutter/exposure time. This differs from the answerable dev capability question about whether ISO/shutter inference is supported."
+    },
+    {
+      "id": "new-ssim-data-range-1",
+      "line": 1353,
+      "fact_group": "new-ssim-data-range",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-ssim-data-range-e1",
+        "new-ssim-data-range-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now explicitly ask float/8-bit data_range AND color channel_axis. Both groups are necessary; official metrics documentation supports these settings and limitations."
+    },
+    {
+      "id": "new-sice-status-2",
+      "line": 1392,
+      "fact_group": "new-sice-status",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-sice-status-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask completed/not_run status and acquisition reasons. Frozen project summary/acquisition provenance agree; G0 does not supply this experiment status."
+    },
+    {
+      "id": "unknown-general-field-success-1",
+      "line": 1418,
+      "fact_group": "unknown-general-field-success",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request an unperformed field/unseen-scene success-rate result; generalization caveats do not supply such a number."
+    },
+    {
+      "id": "old-lost-texture-2",
+      "line": 1429,
+      "fact_group": "old-lost-texture",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-lost-texture-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both are narrowed to confirming clipped true-texture recovery. EXPOSURE and CORRECTION are valid alternatives. The ENHANCEMENT invisible-object-existence rule is related but not a full answer to this narrower texture question."
+    },
+    {
+      "id": "unknown-subject-identity-2",
+      "line": 1462,
+      "fact_group": "unknown-subject-identity",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request absent legal identity information; no identity record is present."
+    },
+    {
+      "id": "new-ontology-license-2",
+      "line": 1473,
+      "fact_group": "new-ontology-license",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-ontology-license-e1",
+        "new-ontology-license-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request ontology version and code/data permission distinction. The ontology evidence is narrowed to the version clause, eliminating the dev architecture fact from its gold. Both facts require added knowledge."
+    },
+    {
+      "id": "unknown-device-2",
+      "line": 1512,
+      "fact_group": "unknown-device",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request absent current device serial/unique ID; no exact value in corpus."
+    },
+    {
+      "id": "new-brightness-grid-and-stop-2",
+      "line": 1523,
+      "fact_group": "new-brightness-grid-and-stop",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-brightness-grid-and-stop-e1",
+        "new-brightness-grid-and-stop-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now request grid/gray thresholds and the independent extreme-frame stopping condition. Code confirms all values; old general endpoint rules do not supply the new numeric settings."
+    },
+    {
+      "id": "old-domain-1",
+      "line": 1562,
+      "fact_group": "old-domain",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-domain-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the same medical, remote-sensing and tiny-industrial-defect scope boundary. SCOPE mentions only part of this requested set; CAPABILITIES supplies the complete answer."
+    },
+    {
+      "id": "unknown-removed-content-2",
+      "line": 1588,
+      "fact_group": "unknown-removed-content",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now request the same unknown cropped-region target count; no unseen content can be recovered from the supplied sources."
+    },
+    {
+      "id": "unknown-future-model-2",
+      "line": 1599,
+      "fact_group": "unknown-future-model",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now refer to the same unperformed future 0.9.0 mAP test; the number is missing."
+    },
+    {
+      "id": "old-natural-brightness-1",
+      "line": 1610,
+      "fact_group": "old-natural-brightness",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-natural-brightness-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether large natural bright/dark regions alone imply failure. EXPOSURE and BRIGHTNESS alternatives supply the rule."
+    },
+    {
+      "id": "old-quality-without-detector-1",
+      "line": 1643,
+      "fact_group": "old-quality-without-detector",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-quality-without-detector-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether exposure assessment AND correction depend on detection weights. CAPABILITIES states this directly; the missing-model/empty-detection question is a separate fact."
+    },
+    {
+      "id": "old-candidate-source-1",
+      "line": 1669,
+      "fact_group": "old-candidate-source",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-candidate-source-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask original-image origin and no chaining. The direct-from-original-once fact answers both; it is counted once with CAPABILITIES and CORRECTION alternatives."
+    },
+    {
+      "id": "new-sice-status-1",
+      "line": 1702,
+      "fact_group": "new-sice-status",
+      "split": "test",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-sice-status-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask completed/not_run status and acquisition reasons. Frozen project summary/acquisition provenance agree; G0 does not supply this experiment status."
+    },
+    {
+      "id": "unknown-removed-content-1",
+      "line": 1728,
+      "fact_group": "unknown-removed-content",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now request the same unknown cropped-region target count; no unseen content can be recovered from the supplied sources."
+    },
+    {
+      "id": "old-missing-model-2",
+      "line": 1739,
+      "fact_group": "old-missing-model",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-missing-model-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the distinction between unavailable detection and an actual empty result. CAPABILITIES supplies that model-specific state distinction; the generic no-detection-run rule is only partial support."
+    },
+    {
+      "id": "unknown-current-gt-1",
+      "line": 1765,
+      "fact_group": "unknown-current-gt",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request missing current-image FN/GT counts; historical aggregates cannot supply them."
+    },
+    {
+      "id": "old-alias-2",
+      "line": 1776,
+      "fact_group": "old-alias",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-alias-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether aliases alter official IDs. CAPABILITIES states the restriction; SCOPE explicitly combines official-ID retention with aliases for user selection and is included as an alternative."
+    },
+    {
+      "id": "old-memory-isolation-1",
+      "line": 1809,
+      "fact_group": "old-memory-isolation",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-memory-isolation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask which display preferences migrate and whether old targets/history migrate. One migration clause answers both; unrelated independent-database/default-all requirement removed."
+    },
+    {
+      "id": "new-machine-iqa-research-2",
+      "line": 1835,
+      "fact_group": "new-machine-iqa-research",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "new-machine-iqa-research-e1",
+        "new-machine-iqa-research-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the paper/preference conclusion and MPD database type/scale. Two necessary facts remain; unrelated project-implementation evidence and the unidentified model premise are removed. Official abstract and Figure 1 support the card."
+    },
+    {
+      "id": "old-current-evidence-1",
+      "line": 1874,
+      "fact_group": "old-current-evidence",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-current-evidence-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both are narrowed to historical analysis replacing current measurements; CAPABILITIES and CALIBRATION give complete supporting alternatives. No historical boxes are presented as current evidence."
+    },
+    {
+      "id": "unknown-current-distance-1",
+      "line": 1907,
+      "fact_group": "unknown-current-distance",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now request the same current person-to-camera metric distance; measurement/calibration is absent."
+    },
+    {
+      "id": "unknown-true-snr-2",
+      "line": 1918,
+      "fact_group": "unknown-true-snr",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask physical SNR; the different read-noise-variance target has been removed. The corpus contains no actual SNR measurement."
+    },
+    {
+      "id": "new-calibration-coverage-2",
+      "line": 1929,
+      "fact_group": "new-calibration-coverage",
+      "split": "dev",
+      "scope": "new",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "new-calibration-coverage-e1",
+        "new-calibration-coverage-e2"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request sufficient/insufficient class counts and independent heldout precision limits. The coverage and test-limitation groups are necessary; all values match frozen summaries."
+    },
+    {
+      "id": "old-status-separation-1",
+      "line": 1968,
+      "fact_group": "old-status-separation",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-status-separation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask the three-way distinction among completion, quality pass and reliable recognition; CAPABILITIES supplies it. General quality-failure examples are not a complete three-way alternative."
+    },
+    {
+      "id": "unknown-future-model-1",
+      "line": 1994,
+      "fact_group": "unknown-future-model",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now refer to the same unperformed future 0.9.0 mAP test; the number is missing."
+    },
+    {
+      "id": "unknown-true-snr-1",
+      "line": 2005,
+      "fact_group": "unknown-true-snr",
+      "split": "dev",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask physical SNR; the different read-noise-variance target has been removed. The corpus contains no actual SNR measurement."
+    },
+    {
+      "id": "old-stability-not-calibration-2",
+      "line": 2016,
+      "fact_group": "old-stability-not-calibration",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "supported_boundary",
+      "required_groups": [
+        "old-stability-not-calibration-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether same-image consistency establishes calibrated accuracy. EXPOSURE states the exact negative boundary; CALIBRATION only lists separate checks and is less complete for this precise equivalence claim."
+    },
+    {
+      "id": "old-rag-baseline-1",
+      "line": 2042,
+      "fact_group": "old-rag-baseline",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-rag-baseline-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask default algorithm, independent-index requirements and unavailable state; one group suffices. The unrelated historical C0/C1 score requirement has been removed."
+    },
+    {
+      "id": "old-alias-1",
+      "line": 2068,
+      "fact_group": "old-alias",
+      "split": "test",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-alias-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask whether aliases alter official IDs. CAPABILITIES states the restriction; SCOPE explicitly combines official-ID retention with aliases for user selection and is included as an alternative."
+    },
+    {
+      "id": "old-memory-isolation-2",
+      "line": 2101,
+      "fact_group": "old-memory-isolation",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-memory-isolation-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both now ask which display preferences migrate and whether old targets/history migrate. One migration clause answers both; unrelated independent-database/default-all requirement removed."
+    },
+    {
+      "id": "unknown-subject-identity-1",
+      "line": 2127,
+      "fact_group": "unknown-subject-identity",
+      "split": "test",
+      "scope": "unanswerable",
+      "answerability_kind": "missing_information",
+      "required_groups": [],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both request absent legal identity information; no identity record is present."
+    },
+    {
+      "id": "old-model-architecture-2",
+      "line": 2138,
+      "fact_group": "old-model-architecture",
+      "split": "dev",
+      "scope": "existing",
+      "answerability_kind": "answerable_fact",
+      "required_groups": [
+        "old-model-architecture-e1"
+      ],
+      "accepted": true,
+      "literal_offsets_and_chunk_fit": true,
+      "assessment": "Both ask architecture and official DEFAULT weights. COCO_MODEL states DEFAULT=COCO_V1; SCOPE identifies project weights but not the explicit official DEFAULT equivalence, so it is not a complete substitute. Ontology test gold no longer includes architecture."
+    }
+  ],
+  "next_step": "Prepare and freeze the run against this exact dataset SHA and reviewed source hashes. Keep dev-only threshold selection and the later one-time heldout evaluation gates separate."
+}

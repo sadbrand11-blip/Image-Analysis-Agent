@@ -75,7 +75,7 @@ def test_frozen_native_and_graph_requests_and_core(expected):
 
 def test_dispatch_registry_is_fixed_lazy_and_preserves_arguments():
     files={p.stem for p in (PROJECT_ROOT/'optical_agent/experiments').glob('*.py') if p.stem not in {'__init__','__main__'}}
-    assert files==set(cli.COMMANDS) and len(files)==34
+    assert files==set(cli.COMMANDS) and len(files)==35
     for command,module in cli.COMMANDS.items():
         if command in cli.NO_ARGUMENT_COMMANDS:continue
         observed=[]

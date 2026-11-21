@@ -1,9 +1,12 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>知识检索对照</title><link rel="stylesheet" href="/static/conversation.css"></head>
-<body><main><header><p class="eyebrow">本地知识检索 · 0.5.0</p><h1>对比三种方法找到的依据</h1><p>无需上传图片。此页只检索本地资料，不调用付费大模型；检索分数不是正确概率。</p><a href="/agent">返回图像对话</a></header>
-<section class="card"><form id="search-form"><label for="question">输入知识问题</label><textarea id="question" rows="3" required>为什么机器人检测框变多，仍不能说识别更准确？</textarea>
+<body><main><header><p class="eyebrow">通用图像知识检索 · 0.6.1</p><h1>对比三种方法找到的依据</h1><p>无需上传图片。此页只检索本地资料，不调用付费大模型；检索分数不是正确概率。</p><a href="/agent">返回图像对话</a></header>
+{% set labels = {'complete':'已完成','not_run':'未运行','not_formally_evaluated':'尚未独立验收','passed_small_scale_project_eval':'通过小规模项目评测','not_promoted_current_default_retained':'未达发布门槛，保留原配置'} %}
+<p class="card" id="release-status">发布配置：{{ rag_release.corpus }} · {{ rag_release.mode }} · 评测 {{ labels.get(rag_release.evaluation_status, rag_release.evaluation_status) }} · 采用状态 {{ labels.get(rag_release.acceptance_status, rag_release.acceptance_status) }}。{{ rag_release.release_notice or '' }}</p>
+<section class="card"><form id="search-form"><label for="question">输入知识问题</label><textarea id="question" rows="3" required>为什么检测框变多，仍不能说识别更准确？</textarea>
 <label for="vision">资料适用配置</label><select id="vision"><option value="general_rgb_v1">普通照片 · 独立通用语料</option></select>
+<label for="corpus">知识库版本</label><select id="corpus"><option value="">当前发布配置</option><option value="general-natural-v1">G0 · 原有知识（14片段）</option><option value="general-natural-v2">G1 · 补充知识（实验对照）</option></select>
 <label for="top-k">交付条数</label><select id="top-k"><option>3</option><option>5</option><option>10</option></select><button id="search">对比检索</button><p id="status" role="status"></p></form></section>
 <p>研究依据示例：<button id="research-example" class="secondary">比较质量分数、框数量与真实标注评测</button>（使用另一条明确的文献问题，不改写上一次排名）</p>
-<p>三列使用相同知识库和适用资料。显示经过开发集拒绝阈值过滤后的实际结果；研究文献与项目实测各有标记。没有返回片段与模型不可用会分别显示。</p>
+<p>三列使用所选语料及其记录的阈值。手动选择实验知识库不代表通过发布门槛。结果中的研究文献与项目实测分别标记；没有返回片段与模型不可用分别显示。</p>
 <div id="rankings" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px"></div>
 <footer>检索评测不等于大模型回答质量，也不改变曝光测量、目标框或可靠性状态。</footer></main><script src="/static/knowledge.js"></script></body></html>

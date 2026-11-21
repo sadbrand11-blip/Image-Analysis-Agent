@@ -18,7 +18,7 @@ optional Torch dependencies. The local model is `BAAI/bge-small-zh-v1.5`, revisi
 `D:\CodexData\optical_agent\rag\general_rgb_v1`, independent of historical frozen C0/C1. The local model stays under `rag/models`.
 Without the model or a valid index, the comparison UI reports unavailable.
 The supported default is TF-IDF; historical Hybrid acceptance does not apply to
-the sanitized public corpus. Do not run historical `publish_rag.py` against this
+the general-photo corpus. Do not run historical `publish_rag.py` against this
 public configuration.
 
 Prepare only the pinned model, then build the independent general corpus index:
@@ -28,8 +28,10 @@ python -m optical_agent.experiments prepare_rag --assets model
 python -c "from optical_agent.general_knowledge import create_general_retriever; print(create_general_retriever(mode='embedding', build=True).metadata())"
 ```
 
-Embedding and Hybrid share the same normalized vectors. No Recall/MRR acceptance
-is claimed for this new corpus. Missing or corrupt assets stay unavailable.
+To build the experimental G1 index, pass `corpus_version='general-natural-v2'`
+to the same factory call. Embedding and Hybrid share the resulting vectors.
+The [0.6.1 retrieval evaluation](GENERAL_RAG_RESULTS.md) retained G0 TF-IDF as
+the default. Select G1 on the knowledge comparison page to inspect its results.
 
 ## LangGraph
 

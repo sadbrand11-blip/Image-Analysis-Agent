@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "profile_id": "general_rgb_v1",
+  "corpus": "general-natural-v1",
+  "corpus_hash": "04ee8c45620bcd94770644ceccb95503ca1407135b742b0852a42db4eaf06bfa",
+  "mode": "tfidf",
+  "thresholds": {
+    "tfidf": 0.1,
+    "dense": 0.75
+  },
+  "mode_thresholds": {
+    "tfidf": {
+      "tfidf": 0.1,
+      "dense": 0.75
+    },
+    "embedding": {
+      "tfidf": 0.1,
+      "dense": 0.75
+    },
+    "hybrid": {
+      "tfidf": 0.1,
+      "dense": 0.75
+    }
+  },
+  "evaluation_status": "complete",
+  "acceptance_status": "not_promoted_current_default_retained",
+  "model_asset_hash": "425c0877d6ee0311af942c5f533a0f7853a8535b1670bf63234ac2ed06b9b2f9",
+  "model_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "evaluation": {
+    "protocol_version": "general-rag-v1",
+    "run_id": "run_20261023",
+    "summary_path": "docs/GENERAL_RAG_RESULTS.json",
+    "labels_sha256": "e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+    "audit_path": "docs/GENERAL_RAG_AUDIT.md",
+    "audit_independence": "same-family provisional",
+    "freeze_sha256": "ccd92cbb0873616778ffa3ae268fa59d917d595aa4e4c55116df9adf6bc2dfc7",
+    "selection_sha256": "fd5513299a8e9840fe2a89f78d09c47acba0d2df0109defa687f882a879e46ec",
+    "label_review": "same-family provisional",
+    "external_human_review": false,
+    "question_count": 80,
+    "fact_group_count": 40,
+    "heldout_questions": 40,
+    "heldout_fact_groups": 20,
+    "paid_api_requests": 0
+  },
+  "release_notice": "新方案未满足全部预设门槛，默认保留G0与原阈值；G1和调优方法供手动对照，未依据测试结果继续调参。",
+  "evaluated_corpora": {
+    "general-natural-v1": {
+      "corpus_hash": "04ee8c45620bcd94770644ceccb95503ca1407135b742b0852a42db4eaf06bfa",
+      "mode_thresholds": {
+        "tfidf": {
+          "tfidf": 0.1,
+          "dense": 0.75
+        },
+        "embedding": {
+          "tfidf": 0.1,
+          "dense": 0.6
+        },
+        "hybrid": {
+          "tfidf": 0.1,
+          "dense": 0.65
+        }
+      },
+      "thresholds": {
+        "tfidf": 0.1,
+        "dense": 0.75
+      },
+      "evaluation_status": "complete",
+      "evaluation": {
+        "protocol_version": "general-rag-v1",
+        "run_id": "run_20261023",
+        "summary_path": "docs/GENERAL_RAG_RESULTS.json",
+        "labels_sha256": "e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+        "audit_path": "docs/GENERAL_RAG_AUDIT.md",
+        "audit_independence": "same-family provisional",
+        "freeze_sha256": "ccd92cbb0873616778ffa3ae268fa59d917d595aa4e4c55116df9adf6bc2dfc7",
+        "selection_sha256": "fd5513299a8e9840fe2a89f78d09c47acba0d2df0109defa687f882a879e46ec",
+        "label_review": "same-family provisional",
+        "external_human_review": false,
+        "question_count": 80,
+        "fact_group_count": 40,
+        "heldout_questions": 40,
+        "heldout_fact_groups": 20,
+        "paid_api_requests": 0,
+        "threshold_phase": "dev_selected"
+      }
+    },
+    "general-natural-v2": {
+      "corpus_hash": "3a259c2b328dc8d2ecef0a5cfa738a6f08f92471e022ee3859ea09a97ba63edb",
+      "mode_thresholds": {
+        "tfidf": {
+          "tfidf": 0.1,
+          "dense": 0.75
+        },
+        "embedding": {
+          "tfidf": 0.1,
+          "dense": 0.65
+        },
+        "hybrid": {
+          "tfidf": 0.15,
+          "dense": 0.65
+        }
+      },
+      "thresholds": {
+        "tfidf": 0.1,
+        "dense": 0.75
+      },
+      "evaluation_status": "complete",
+      "evaluation": {
+        "protocol_version": "general-rag-v1",
+        "run_id": "run_20261023",
+        "summary_path": "docs/GENERAL_RAG_RESULTS.json",
+        "labels_sha256": "e67a9107fcee405233f3fb53256436f56c66b913836e17c336c27f3edbe89f97",
+        "audit_path": "docs/GENERAL_RAG_AUDIT.md",
+        "audit_independence": "same-family provisional",
+        "freeze_sha256": "ccd92cbb0873616778ffa3ae268fa59d917d595aa4e4c55116df9adf6bc2dfc7",
+        "selection_sha256": "fd5513299a8e9840fe2a89f78d09c47acba0d2df0109defa687f882a879e46ec",
+        "label_review": "same-family provisional",
+        "external_human_review": false,
+        "question_count": 80,
+        "fact_group_count": 40,
+        "heldout_questions": 40,
+        "heldout_fact_groups": 20,
+        "paid_api_requests": 0,
+        "threshold_phase": "dev_selected"
+      }
+    }
+  }
+}
